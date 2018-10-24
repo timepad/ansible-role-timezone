@@ -1,0 +1,13 @@
+- name: restart cron
+  service:
+    name: "{{ timezone_cron_daemon }}"
+    state: restarted
+    enabled: yes
+
+- name: restart dependent services
+  service:
+    name: "{{ item }}"
+    state: restarted
+    enabled: yes
+  loop: "{{ timezone_services_restart }}"
+  when: timezone_services_restart
