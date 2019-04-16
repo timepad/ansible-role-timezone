@@ -10,4 +10,4 @@
     state: restarted
     enabled: yes
   loop: "{{ timezone_services_restart }}"
-  when: timezone_services_restart
+  when: timezone_services_restart is defined and timezone_services_restart
